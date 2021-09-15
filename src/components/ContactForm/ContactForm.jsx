@@ -1,10 +1,12 @@
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
+const INITIAL_STATE = {
+  name: '',
+  number: '',
+};
 class ContactForm extends Component {
   state = {
-    name: '',
-    number: '',
+    ...INITIAL_STATE
   }
 
   hendleChange = (event) => {
@@ -17,14 +19,13 @@ class ContactForm extends Component {
 
   hendleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state) 
+    this.props.onSubmit(this.state)
+    this.reset()
   }
 
   reset = () => {
     this.setState({
-      id: '',
-      name: '',
-      number:'',
+      ...INITIAL_STATE
     });
   }
 
